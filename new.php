@@ -39,7 +39,7 @@
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="menu">
-                 <li class="menu-text">PostgreSQL Blog</li>
+                 <li class="menu-text"><a href="index.php">PostgreSQL Blog</a></li>
             </ul>
         </div>
         

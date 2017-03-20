@@ -2,8 +2,11 @@
 
     include 'config/db.php';
 
+    $id = $_GET['id']; 
+
+
     // Get articles
-    $a_query = "SELECT * FROM articles INNER JOIN categories ON articles.category_id = categories.id";
+    $a_query = "SELECT * FROM articles INNER JOIN categories ON articles.category_id = categories.id WHERE articles.category_id = $id";
     $a_result = pg_query($con, $a_query) or die("Не могу выполнить запрос к базе данных: " . $a_query . "\n");
 
   

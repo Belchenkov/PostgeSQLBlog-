@@ -28,6 +28,10 @@ h3 {
     color: #fff;
 }
 
+.top-bar-right {
+    padding-top: 10px;
+}
+
 .callout.large.primary {
     background: url('../images/old_wall.png');
 }
