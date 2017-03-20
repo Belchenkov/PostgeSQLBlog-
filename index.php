@@ -23,6 +23,7 @@
     <title>PostgreSQL Blog</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
@@ -36,13 +37,14 @@
         <div class="top-bar-right">
             <ul class="menu">
                 <li><a href="index.php">Главная</a></li>
+                <li><a href="new.php">Добавить статью</a></li>
             </ul>
         </div>
     </div>
         
     <div class="callout large primary">
         <div class="row column text-center">
-            <h1>Статьи</h1>
+            <h1>Блог на PostgreSQL</h1>
         </div>
     </div>
         <div class="row" id="content">
@@ -62,11 +64,11 @@
         <div class="medium-3 columns" data-sticky-container>
             <div class="sticky" data-sticky data-anchor="content">
                 <h4>Категории</h4>
-                <ul class="un">
-                <?php while($row = pg_fetch_assoc($c_result)) : ?>
-                    <li><a href="category.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a></li>
+                <ul class="">
+                     <?php while($row = pg_fetch_assoc($c_result)) : ?>
+                         <li><a href="category.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a></li>
+                     <?php endwhile; ?>
                 </ul>
-                <?php endwhile; ?>
             </div>
         </div>
     </div>
