@@ -3,7 +3,7 @@
     include 'config/db.php';
 
     // Get articles
-    $a_query = "SELECT * FROM articles";
+    $a_query = "SELECT * FROM articles INNER JOIN categories ON articles.category_id = category.id";
     $a_result = pg_query($con, $a_query) or die("Не могу выполнить запрос к базе данных: " . $a_query . "\n");
 
     pg_close($con);
@@ -46,6 +46,11 @@
                     <div class="blog-post">
                     <h3><?= $row['title']; ?></h3>
                     <p><?= $row['body']; ?></p>
+                    <div class="callout">
+                        <ul class="menu simple">
+                            <li>Категории</li>
+                        </ul>
+                    </div>
                 </div>
                 <?php endwhile; ?>
         </div>
