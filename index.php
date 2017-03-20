@@ -3,8 +3,13 @@
     include 'config/db.php';
 
     // Get articles
-    $a_query = "SELECT * FROM articles INNER JOIN categories ON articles.category_id = category.id";
+    $a_query = "SELECT * FROM articles INNER JOIN categories ON articles.category_id = categories.id";
     $a_result = pg_query($con, $a_query) or die("Не могу выполнить запрос к базе данных: " . $a_query . "\n");
+
+  
+    // Get categories
+    $c_query = "SELECT * FROM categories";
+    $c_result = pg_query($con, $c_query) or die("Не могу выполнить запрос к базе данных: " . $c_query . "\n");
 
     pg_close($con);
 ?>
@@ -47,22 +52,21 @@
                     <h3><?= $row['title']; ?></h3>
                     <p><?= $row['body']; ?></p>
                     <div class="callout">
-                        <ul class="menu simple">
-                            <li>Категории</li>
-                        </ul>
-                    </div>
+                        <p> <em>Категория:</em> 
+                            <a href="category.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a>
+                        </p>
+                   </div>
                 </div>
                 <?php endwhile; ?>
         </div>
         <div class="medium-3 columns" data-sticky-container>
             <div class="sticky" data-sticky data-anchor="content">
-                <h4>Categories</h4>
-                <ul>
-                    <li><a href="#">Skyler</a></li>
-                    <li><a href="#">Jesse</a></li>
-                    <li><a href="#">Mike</a></li>
-                    <li><a href="#">Holly</a></li>
+                <h4>Категории</h4>
+                <ul class="un">
+                <?php while($row = pg_fetch_assoc($c_result)) : ?>
+                    <li><a href="category.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a></li>
                 </ul>
+                <?php endwhile; ?>
             </div>
         </div>
     </div>
